@@ -3,9 +3,11 @@ package br.edu.fasm.gestoros.model;
 /**
  * Cliente da assistencia tecnica.
  *
- * A classe representa uma coisa do mundo real, nao uma tela nem uma tabela.
- * Os atributos sao privados: o acesso ocorre por metodos publicos.
- * A validacao dos dados entra na Aula 02, junto com encapsulamento.
+ * Encapsulamento: os atributos sao privados e so mudam por metodos que
+ * validam o valor recebido. Assim o objeto nunca entra em estado invalido.
+ *
+ * Os setters sao final porque o construtor os chama: um metodo sobrescrito
+ * por uma subclasse rodaria antes de a subclasse estar pronta.
  */
 public class Cliente {
 
@@ -13,12 +15,27 @@ public class Cliente {
     private String nome;
     private String telefone;
 
-    // O construtor exige o que o objeto precisa para existir.
     public Cliente(String nome, String telefone) {
-        this.nome = nome;
-        this.telefone = telefone;
+        // O construtor delega ao setter: a regra fica escrita em um lugar so.
+        setNome(nome);
+        setTelefone(telefone);
     }
 
+    public final void setNome(String nome) {
+        if (nome == null || nome.trim().length() < 3) {
+            throw new IllegalArgumentException("Nome deve ter ao menos 3 caracteres.");
+        }
+        this.nome = nome.trim();
+    }
+
+    public final void setTelefone(String telefone) {
+        if (telefone == null || telefone.isBlank()) {
+            throw new IllegalArgumentException("Telefone e obrigatorio.");
+        }
+        this.telefone = telefone.trim();
+    }
+
+    // Sem setter para id: quem define o identificador e o banco, na Aula 06.
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public String getNome() { return nome; }
