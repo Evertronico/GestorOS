@@ -3,22 +3,24 @@ package br.edu.fasm.gestoros.model;
 /**
  * Equipamento deixado pelo cliente para conserto.
  *
- * O vinculo com o cliente ainda e o identificador dele. A associacao entre
- * objetos, com referencia direta a Cliente, e assunto da Aula 03.
+ * O vinculo com o cliente agora e uma associacao: o campo guarda uma
+ * referencia direta ao objeto Cliente, nao mais a um numero solto. O
+ * equipamento nao possui o cliente, apenas aponta para ele; o cliente
+ * continua existindo mesmo que o equipamento seja descartado
  */
 public class Equipamento {
 
     private int id;
-    private int idCliente;
+    private Cliente cliente;
     private String tipo;
     private String marca;
     private String defeito;
 
-    public Equipamento(int idCliente, String tipo, String marca, String defeito) {
-        if (idCliente <= 0) {
+    public Equipamento(Cliente cliente, String tipo, String marca, String defeito) {
+        if (cliente == null) {
             throw new IllegalArgumentException("Equipamento precisa de um cliente.");
         }
-        this.idCliente = idCliente;
+        this.cliente = cliente;
         setTipo(tipo);
         this.marca = marca;
         setDefeito(defeito);
@@ -40,7 +42,7 @@ public class Equipamento {
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
-    public int getIdCliente() { return idCliente; }
+    public Cliente getCliente() { return cliente; }
     public String getTipo() { return tipo; }
     public String getMarca() { return marca; }
     public String getDefeito() { return defeito; }
