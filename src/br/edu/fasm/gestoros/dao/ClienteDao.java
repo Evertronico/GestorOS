@@ -3,13 +3,21 @@ package br.edu.fasm.gestoros.dao;
 import br.edu.fasm.gestoros.model.Cliente;
 
 /**
- * Primeira implementação concreta do contrato Dao<T>.
+ * Primeira implementacao concreta do contrato Dao<T>.
  *
- * Objetivo da Aula 05: estender DaoBase<Cliente> e ensinar a ela onde fica
- * o identificador de um Cliente - nada além disso deveria ser necessário
- * aqui, se o CRUD genérico em DaoBase estiver correto.
+ * Nao repete nenhuma logica de salvar, buscar, listar ou remover - tudo
+ * isso ja existe em DaoBase. ClienteDao so ensina o que e exclusivo de
+ * Cliente: onde fica o identificador.
  */
 public class ClienteDao extends DaoBase<Cliente> {
 
-    // TODO: implementar definirId e idDe para Cliente.
+    @Override
+    protected void definirId(Cliente objeto, int id) {
+        objeto.setId(id);
+    }
+
+    @Override
+    protected int idDe(Cliente objeto) {
+        return objeto.getId();
+    }
 }
