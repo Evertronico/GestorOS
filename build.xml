@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="GestorOS" default="default" basedir=".">
+    <import file="nbproject/build-impl.xml"/>
+    <!-- build-impl.xml e gerado pelo NetBeans ao abrir o projeto. -->
+</project>
