@@ -17,6 +17,8 @@ public interface Dao<T> {
 
     T salvar(T objeto);
 
+    T atualizar(T objeto);
+
     T buscarPorId(int id);
 
     List<T> listarTodos();

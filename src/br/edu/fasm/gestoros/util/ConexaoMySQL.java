@@ -6,11 +6,11 @@ import java.sql.SQLException;
 
 /**
  * Ponto único de abertura de conexão com o MySQL.
- * 
- * URL, usuário e senha ficam concentradas aqui - nenhuma outra classe
- * do GestorOS precisa conhecer esses detalhes. Ainda não é usada por 
- * nenhum Dao<T>: a AUla 05 deixou DaoBase guardando registros em memória,
- * e isso continua assim até a Aula 07 trocar essa lista por um SQL de verdade.
+ *
+ * URL, usuário e senha ficam concentrados aqui - nenhuma outra classe do
+ * GestorOS precisa conhecer esses detalhes. Ainda não é usada por nenhum
+ * Dao<T>: a Aula 05 deixou DaoBase guardando registros em memória, e isso
+ * continua assim até a Aula 07 trocar essa lista por SQL de verdade.
  */
 public final class ConexaoMySQL {
 
